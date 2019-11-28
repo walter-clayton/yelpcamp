@@ -1,0 +1,19 @@
+{
+  "name": "v1",
+  "version": "1.0.0",
+  "description": "YelpCamp v1",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/walter-clayton/yelpcamp.git"
+  },
+  "author": "walter clayton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/walter-clayton/yelpcamp/issues"
+  },
+  "homepage": "https://github.com/walter-clayton/yelpcamp#readme"
+}
