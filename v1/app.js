@@ -1,30 +1,30 @@
-var express = require("express"),
-    app = express(),
-    bodyParser = require("body-parser"),
-    mongoose = require("mongoose");
+var express         = require("express"),
+    app             = express(),
+    bodyParser      = require("body-parser"),
+    mongoose        = require("mongoose"),
+    Campground      = require("./models/campground"),
+    seedDB          = require("./seeds");
+    
 
-    mongoose.connect('mongodb://localhost/yelp_camp', {useNewUrlParser: true, useUnifiedTopology: true}, (err) => {
-        if(err) {
-      console.log('Database error: ' + err);
-     } else {
-      console.log('Successful database connection'); 
-     }
-    });
-   
+
+mongoose.connect('mongodb://localhost/yelp_camp', {useNewUrlParser: true, useUnifiedTopology: true}, (err) => {
+    if(err) {
+    console.log('Database error: ' + err);
+    } else {
+    console.log('Successful database connection'); 
+    }
+});
+
+seedDB();
+
+
 app.use(bodyParser.urlencoded({extended: true}));
-
 app.set("view engine", "ejs");
 
 
 // SCHEMA SETUP
 
-var campgroundSchema = new mongoose.Schema({
-    name: String,
-    image: String, 
-    description: String
-});
 
-var Campground = mongoose.model("Campground", campgroundSchema);
 
 // Campground.create(
 //     {
@@ -41,14 +41,14 @@ var Campground = mongoose.model("Campground", campgroundSchema);
 // });
 
 
-var campgrounds = [
-        {name: "Salmon Creek", image:"https://cdn.shopify.com/s/files/1/2468/4011/products/campsite_1_600x.png?v=1524622915"},
-        {name: "Granite Hill", image:"https://cdn.shopify.com/s/files/1/2468/4011/products/campsite2_600x.png?v=1524622941"},
-        {name: "Kili Hill", image:"https://cdn.shopify.com/s/files/1/2468/4011/products/campsite3_600x.png?v=1524622961"},
-        {name: "Salmon Creek", image:"https://cdn.shopify.com/s/files/1/2468/4011/products/campsite_1_600x.png?v=1524622915"},
-        {name: "Granite Hill", image:"https://cdn.shopify.com/s/files/1/2468/4011/products/campsite2_600x.png?v=1524622941"},
-        {name: "Kili Hill", image:"https://cdn.shopify.com/s/files/1/2468/4011/products/campsite3_600x.png?v=1524622961"},
-    ]
+// var campgrounds = [
+//         {name: "Salmon Creek", image:"https://cdn.shopify.com/s/files/1/2468/4011/products/campsite_1_600x.png?v=1524622915"},
+//         {name: "Granite Hill", image:"https://cdn.shopify.com/s/files/1/2468/4011/products/campsite2_600x.png?v=1524622941"},
+//         {name: "Kili Hill", image:"https://cdn.shopify.com/s/files/1/2468/4011/products/campsite3_600x.png?v=1524622961"},
+//         {name: "Salmon Creek", image:"https://cdn.shopify.com/s/files/1/2468/4011/products/campsite_1_600x.png?v=1524622915"},
+//         {name: "Granite Hill", image:"https://cdn.shopify.com/s/files/1/2468/4011/products/campsite2_600x.png?v=1524622941"},
+//         {name: "Kili Hill", image:"https://cdn.shopify.com/s/files/1/2468/4011/products/campsite3_600x.png?v=1524622961"},
+//     ]
 
 // INDEX - show all campgrounds
 app.get("/", function(req, res){
@@ -58,11 +58,11 @@ app.get("/", function(req, res){
 app.get("/campgrounds", function(req, res){
     
     // get all campgrounds from DB
-    Campground.find({}, function(err, allcampgrounds){
+    Campground.find({}, function(err, allCampgrounds){
         if(err){
             console.log(err);
         } else {
-                res.render("index", {campgrounds: allcampgrounds});
+                res.render("index", {campgrounds: allCampgrounds});
         }
     });
 });
@@ -82,7 +82,7 @@ app.post("/campgrounds", function(req, res){
                 // redirect back to campgrounds page
                 res.redirect("/campgrounds");
         }
-    })
+    });
 });
 
 // NEW - show form to create new campgrounds
