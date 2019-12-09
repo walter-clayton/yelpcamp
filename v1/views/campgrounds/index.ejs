@@ -19,8 +19,8 @@
             <h3>Our most popular campgrounds</h3>
             <% campgrounds.forEach(function(campground){ %>
             <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                    <img src="<%= campground.image %>" alt="">
+                <div class="thumbnail p-0 m-0">
+                    <img class = "img-fluid" src="<%= campground.image %>" alt="">
                     <div class="caption">
                             <h4><%= campground.name %></h4>
                     </div>
