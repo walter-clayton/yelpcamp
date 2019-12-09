@@ -10,7 +10,7 @@ var seeds = [
     },
     {
         name: "Desert Mesa", 
-        image: "https://farm4.staticflickr.com/3859/15123592300_6eecab209b.jpg",
+        image: "https://farm4.staticflickr.com/3795/10131087094_c1c0a1c859.jpg",
         description: "blah blah blah"
     },
     {
