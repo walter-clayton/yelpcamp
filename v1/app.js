@@ -2,8 +2,8 @@ var express         = require("express"),
     app             = express(),
     bodyParser      = require("body-parser"),
     mongoose        = require("mongoose"),
+    Campground      = require("./models/campground"),  
     Comment         = require("./models/comment"),
-    Campground      = require("./models/campground"),
     seedDB          = require("./seeds");
     
 
@@ -20,7 +20,7 @@ mongoose.connect('mongodb://localhost/yelp_camp', {useNewUrlParser: true, useUni
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
-
+app.use(express.static(__dirname + "/public"));
 seedDB();
 
 
@@ -61,7 +61,7 @@ app.post("/campgrounds", function(req, res){
 
 // NEW - show form to create new campgrounds
 app.get("/campgrounds/new", function(req, res){
-    res.render("camgrounds/new");
+    res.render("campgrounds/new");
 });
 
 // SHOW - shows more info about one campground
@@ -76,7 +76,7 @@ app.get("/campgrounds/:id", function(req, res){
             res.render("campgrounds/show", {campground: foundCampground});
         }
     });
-})
+});
 
 
 // ===================
@@ -113,8 +113,6 @@ app.post("/campgrounds/:id/comments", function(req, res){
             }
         });
     });
-    // create new comment
-    // connect 
 
 
 
