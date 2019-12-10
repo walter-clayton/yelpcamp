@@ -69,19 +69,31 @@ router.get("/:id/edit", function(req, res){
     });
 });
 
+// UPDATE CAMPGROUND ROUTE
 router.put("/:id", function(req, res){
     // find and update the correct campground
     Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground){
         if(err){
             res.redirect("/campgrounds");
         } else {
+                // redirect somewhere (show)
             res.redirect("/campgrounds/" + req.params.id)
         }
     });
-    // redirect somewhere (show)
 });
 
-// UPDATE CAMPGROUND ROUTE
+// DESTROY CAMPGROUND
+router.delete("/:id", function(req, res){
+    Campground.findByIdAndRemove(req.params.id, function(err){
+        if(err){
+            res.redirect("/campgrounds");
+        } else {
+                // redirect somewhere (show)
+            res.redirect("/campgrounds/");
+        }
+    });
+});
+
 
     //middleware
     function isLoggedIn(req, res, next){
