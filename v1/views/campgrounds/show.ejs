@@ -21,6 +21,7 @@
                 <p> 
                     <em>Sumbitted by <%= campground.author.username %> </em>
                 </p>
+                <a class="btn btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
             </div>
             </div>
             <div class="well">
@@ -42,10 +43,5 @@
         </div>
     </div>
 </div>
-
-
-
-
-
 
 <%- include ('../partials/footer') %>
