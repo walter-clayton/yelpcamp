@@ -2,6 +2,7 @@ var express         = require("express"),
     app             = express(),
     bodyParser      = require("body-parser"),
     mongoose        = require("mongoose"),
+    flash           = require("connect-flash"),
     passport        = require("passport"),
     LocalStrategy   = require("passport-local"),
     methodOverride  = require("method-override"),
@@ -26,6 +27,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
+app.use(flash());
 // seed the database
 // seedDB();
 
@@ -46,6 +48,8 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
     next();
 });
 
@@ -59,5 +63,5 @@ app.listen(process.env.PORT, process.env.IP, function(){
 
 var port = process.env.PORT || 3000;
 app.listen(3000, function(){
-	console.log("ready on port 3000 " + port);
+	console.log("ready on port 27017 " + port);
 });
