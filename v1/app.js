@@ -63,5 +63,5 @@ app.listen(process.env.PORT, process.env.IP, function(){
 
 var port = process.env.PORT || 3000;
 app.listen(3000, function(){
-	console.log("ready on port 3000 " + port);
+	console.log("ready on port 27017 " + port);
 });
