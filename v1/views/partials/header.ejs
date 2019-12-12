@@ -4,42 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- FAVICON -->
+    <link rel='icon' href='./images/campground-solid.ico' type='image/x-icon'>
+    <!-- FONTAWESOME -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    
     <title>YelpCamp</title>
 </head>
 <body>
-
-        <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                   <div class="navbar-header">
-                       <a class="navbar-brand" href="/">YelpCamp</a>
-                   </div>
-                   <div class="collapse navbar-collapse">
-                       <ul class="nav navbabr-nav navbar-right">
+         
+	<nav class=" navbar navbar-expand-lg navbar-light bg-light  ">
+        <a class="navbar-brand hover " href="/campgrounds"> <i class="fas fa-campground"></i></a>
+        <button class="navbar-toggler"  type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" >
+        <span class="navbar-toggler-icon "></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="nav navbar-nav mr-auto  content-align-around">
+                        <li class="nav-item">
+                        <form action="/campgrounds" method="GET" class="navbar-form form-inline">
+                            <div class="input-group">
+                                <input type="text" style = "width: 300px" name = "search" placeholder="Search" class=" bg-transparent form-control border "  aria-describedby="button-addon1">
+                                <div class="input-group-append">
+                                         <input  type="submit" value="Search" class = "  btn btn-light border  " id = "button-addon1">
+                                </div>
+                            </div>
+                        </form>
+                        </li>
+                </ul>
+                <ul class="nav navbar-nav mr-0">
                         <%   if(!currentUser){ %>
-                           <li><a href="/login">Login</a></li>
-                           <li><a href="/register">Sign Up</a></li>
-                         <%   } else { %>
-                            <li> <a href="#">Signed in as <%= currentUser.username %></a> </li>
-                            <li><a href="/logout">Logout</a></li>
-                              <%  } %>
-                       </ul>
-                   </div>
-                </div>
-               </nav>
-    
-               <div class="container">
-                   <% if(error && error.length > 0) { %>
-                    <div class="alert alert-danger" role="alert">
-                        <%= error %> 
-                    </div>
-                </div>
-                <% } %>
-                <% if(success && success.length > 0) { %>
-               <div class="container">
-                    <div class="alert alert-success" role="alert">
-                        <%= success %> 
-                    </div>
-                    <% } %>
-                </div>
+                        <li>
+                            <a class="nav-link" href="/login"> <i class="fas fa-user"></i> LOGIN </a>
+                        </li>
+                        <li>
+                            <a class=" nav-link" href="/register"><i class="fas fa-sign-in-alt"></i> SIGN UP</a>
+                        </li>
+                                <%   } else { %>
+                        <li>
+                            <a class="nav-link" href="/logout"><span ><i class="fas fa-sign-out-alt"></i> LOGOUT</span></a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="#"><span class="hover"><i class="fas fa-user"></i> <strong> <%= currentUser.username %> </strong></span></a>
+                        </li>
+                                <% } %>
+                </ul>
+            </div>
+    </nav>
+
+<div class="container">
+        <% if(error && error.length > 0) { %>
+         <div class="alert alert-danger" role="alert">
+             <%= error %> 
+         </div>
+     </div>
+     <% } %>
+     <% if(success && success.length > 0) { %>
+    <div class="container">
+         <div class="alert alert-success" role="alert">
+             <%= success %> 
+         </div>
+         <% } %>
+     </div>
