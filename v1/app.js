@@ -10,7 +10,7 @@ var express         = require("express"),
     Comment         = require("./models/comment"),
     User            = require("./models/user"),
     seedDB          = require("./seeds");
-    
+
 var commentRoutes       = require("./routes/comments"),
     campgroundRoutes    = require("./routes/campgrounds"),
     indexRoutes         = require("./routes/index");
@@ -30,6 +30,8 @@ app.use(methodOverride("_method"));
 app.use(flash());
 // seed the database
 // seedDB();
+
+app.locals.moment = require("moment");
 
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({
