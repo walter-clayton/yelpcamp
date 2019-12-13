@@ -25,10 +25,10 @@
               <ul class="nav navbar-nav mr-auto  content-align-around">
                         <li class="nav-item">
                         <form action="/campgrounds" method="GET" class="navbar-form form-inline">
-                            <div class="input-group">
-                                <input type="text" style = "width: 300px" name = "search" placeholder="Search" class=" bg-transparent form-control border "  aria-describedby="button-addon1">
+                            <div id = "search" class="input-group mx-auto" style = "width: 100%">
+                                <input type="text" id = "search"  name = "search" placeholder="Search" class=" mt-2 bg-transparent form-control border "  aria-describedby="button-addon1">
                                 <div class="input-group-append">
-                                         <input  type="submit" value="Search" class = "  btn btn-light border  " id = "button-addon1">
+                                         <input  type="submit" value="Search" class = "mt-2 btn btn-light border " id = "button-addon1">
                                 </div>
                             </div>
                         </form>
@@ -36,17 +36,17 @@
                 </ul>
                 <ul class="nav navbar-nav mr-0">
                         <%   if(!currentUser){ %>
-                        <li>
-                            <a class="nav-link" href="/login"> <i class="fas fa-user"></i> LOGIN </a>
+                        <li class="mx-auto">
+                            <a class="nav-link mx-auto" href="/login"> <i class="fas fa-user"></i> LOGIN </a>
                         </li>
-                        <li>
+                        <li class="mx-auto">
                             <a class=" nav-link" href="/register"><i class="fas fa-sign-in-alt"></i> SIGN UP</a>
-                        </li>
+                        </li> 
                                 <%   } else { %>
-                        <li>
+                        <li class="mx-auto">
                             <a class="nav-link" href="/logout"><span ><i class="fas fa-sign-out-alt"></i> LOGOUT</span></a>
                         </li>
-                        <li>
+                        <li class="mx-auto">
                             <a class="nav-link" href="#"><span class="hover"><i class="fas fa-user"></i> <strong> <%= currentUser.username %> </strong></span></a>
                         </li>
                                 <% } %>
@@ -68,3 +68,6 @@
          </div>
          <% } %>
      </div>
+
+<div class="container">
+
