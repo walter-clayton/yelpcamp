@@ -1,6 +1,13 @@
-.thumbnail img {
- width: 100% !important;
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
 }
+
+
 
 .thumbnail {
     padding: 0 !important;
@@ -13,3 +20,33 @@
 .delete-form {
     display: inline;
 }
+
+    /* for > Computer Screens */
+    @media (min-width: 768px) {
+    .img-thumbnail {
+        width: 300px !important;
+        height: 200px !important;
+    }        
+
+    #search {
+        width: 450px;
+    }
+
+    }
+
+    /*For Tablets and IPAD */
+    @media (min-width: 768px) and (max-width: 1024px) {
+        .img-thumbnail {
+            width: 300px !important;
+            height: 200px !important;
+        }      
+
+    }
+
+    /* For Androids and IPHONEs  */
+    @media (min-width: 320px) and (max-width: 650px) {
+        .img-thumbnail {
+            width: 300px !important;
+            height: 200px !important;
+        }    
+    }
