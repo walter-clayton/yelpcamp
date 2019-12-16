@@ -6,7 +6,7 @@ var middleware = require("../middleware");
 
 //INDEX - show all campgrounds
 router.get("/", function(req, res){
-    var perPage = 8;
+    var perPage = 9;
     var pageQuery = parseInt(req.query.page);
     var pageNumber = pageQuery ? pageQuery : 1;
     var noMatch = null;
