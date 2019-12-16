@@ -23,12 +23,11 @@ router.get("/", function(req, res){
                     }
                     res.render("campgrounds/index", {
                         campgrounds: allCampgrounds,
-                        page: 'campgrounds',
-                        current: page,
+                        current: pageNumber,
                         pages: Math.ceil(count / perPage),
                         noMatch: noMatch,
-                        search: false
-                     });
+                        search: req.query.search
+                    });
                 }
             });
         });
@@ -59,12 +58,11 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     var price = req.body.price;
     var image = req.body.image;
     var desc = req.body.description;
-    var map  = req.body.map;
     var author = {
         id: req.user._id,
         username: req.user.username
     }
-    var newCampground = {name: name, price: price, image: image, description: desc, map: map, author:author}
+    var newCampground = {name: name, price: price, image: image, description: desc, author:author}
     // Create a new campground and save to DB
     Campground.create(newCampground, function(err, newlyCreated){
         if(err){

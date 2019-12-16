@@ -1,9 +1,9 @@
 <%- include ('../partials/header') %>
 
 
-<div class="row">
-        <h1 style="text-align: center;" > Create a New Campground</h1>
-        <div style="width: 30%; margin: 30px auto;">
+<div class="column mx-auto mt-5">
+        <h3 style="text-align: center;" > Create a New Campground</h3>
+        <div style="mx-auto">
                 <form action="/campgrounds" method="POST" >
                     <div class="form-group">
                        <input class="form-control" type="text" name = "name" placeholder="name">
@@ -13,15 +13,12 @@
                    </div>
                    <div class="form-group">
                        <div class="form-group">
-                           <input class="form-control" type="text" name = "image" placeholder="image url">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name = "image" placeholder="image url"></textarea>
                        </div>
                        <div class="form-group">
-                           <input class="form-control" type="text" name = "description" placeholder="description">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name = "description" placeholder="description"></textarea>
                        </div>
-                       <div class="form-group">
-                           <input class="form-control" type="text" name = "map" placeholder="map html">
-                       </div>
-                       <button class="btn btn-lg btn-primary btn-block">Submit</button>
+                       <button class="btn btn-lg btn-secondary btn-block">Submit</button>
                    </div>
            </form>
            <a href="/campgrounds">Go back</a>

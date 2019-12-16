@@ -1,9 +1,9 @@
 <%- include ('../partials/header') %>
 
 
-<div class="row">
+<div class="column mx-auto mt-5">
         <h1 style="text-align: center;" > Edit <%= campground.name %></h1>
-        <div style="width: 30%; margin: 30px auto;">
+        <div style="mx-auto">
                 <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST" >
                     <div class="form-group">
                        <input class="form-control" type="text" name = "campground[name]" value=" <%= campground.name %>">
@@ -13,15 +13,12 @@
                     </div>
                    <div class="form-group">
                        <div class="form-group">
-                           <input class="form-control" type="text" name = "campground[image]" value=" <%= campground.image %>">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name = "campground[image]" placeholder="image url" value=" <%= campground.image %>"></textarea>
                        </div>
                        <div class="form-group">
-                           <input class="form-control" type="text" name = "campground[description]" value=" <%= campground.description %>">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name = "campground[description]" placeholder="description" value=" <%= campground.description %>"></textarea>
                        </div>
-                       <div class="form-group">
-                        <input class="form-control" type="text" name = "campground[map]" value= "<%= campground.map %>" placeholder="map html">
-                    </div>
-                       <button class="btn btn-lg btn-primary btn-block">Submit</button>
+                       <button class="btn btn-lg btn-secondary btn-block">Submit</button>
                    </div>
            </form>
            <a href="/campgrounds">Go back</a>
