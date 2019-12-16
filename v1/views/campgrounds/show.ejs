@@ -15,7 +15,7 @@
                 <hr>
                  <div class="d-flex justify-content-center">     
                     <p>
-                        <em>Sumbitted by <strong><%= campground.author.username %></strong>, <span class="text-secondary"><%= moment(campground.createdAt).fromNow() %> </span></em>
+                        <em>Sumbitted by <a href="/users/<%= campground.author.id %>"><strong><%= campground.author.username %></strong></a>, <span class="text-secondary"><%= moment(campground.createdAt).fromNow() %> </span></em>
                     </p> 
                 </div>
                 <% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
