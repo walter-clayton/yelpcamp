@@ -47,7 +47,7 @@
                             <a class="nav-link" href="/logout"><span ><i class="fas fa-sign-out-alt"></i> LOGOUT</span></a>
                         </li>
                         <li class="mx-auto">
-                            <a class="nav-link" href="/users/<%= campground.author.id %>"><span class="hover"><i class="fas fa-user"></i> <strong> <%= currentUser.username %> </strong></span></a>
+                            <a class="nav-link" href="/users/<%= currentUser._id %>"><span class="hover"><i class="fas fa-user"></i> <strong> <%= currentUser.username %> </strong></span></a>
                         </li>
                                 <% } %>
                 </ul>
