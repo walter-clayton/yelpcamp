@@ -2,6 +2,7 @@ var express = require("express");
 var router  = express.Router();
 var Campground = require("../models/campground");
 var middleware = require("../middleware");
+var fetch = require("node-fetch");
 
 
 //INDEX - show all campgrounds
@@ -58,11 +59,12 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     var price = req.body.price;
     var image = req.body.image;
     var desc = req.body.description;
+    var location = req.body.location;
     var author = {
         id: req.user._id,
         username: req.user.username
     }
-    var newCampground = {name: name, price: price, image: image, description: desc, author: author}
+    var newCampground = {name: name, price: price, image: image, description: desc, location: location, author: author}
     // Create a new campground and save to DB
     Campground.create(newCampground, function(err, newlyCreated){
         if(err){
@@ -82,14 +84,40 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
 
 // SHOW - shows more info about one campground
 router.get("/:id", function(req, res){
+
+
     //find the campground with provided ID
     Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
         if(err){
             console.log(err);
         } else {
-            console.log(foundCampground)
-            //render show template with that campground
-            res.render("campgrounds/show", {campground: foundCampground});
+        console.log(foundCampground)
+      
+
+        var weatherapi = "http://api.weatherstack.com/current?access_key=517f4af44a62308c1ca67254975142bd&query=" + foundCampground.location;
+        console.log(foundCampground.location)
+                var temperature="";
+        var weather_icons ="";//fetching meteo API
+        fetch(weatherapi)
+        .then((res) =>{
+        if(res.status === 200){
+        console.log("ok")
+        return res.json()
+        }   else{
+        console.log("error")
+        return false
+
+        }
+    })
+    .then((data) => {
+        temperature=data.current.temperature
+        weather_icons = data.current.weather_icons
+        console.log(temperature)  
+        //render show template with that campground
+        res.render("campgrounds/show", {campground: foundCampground, temp:temperature, weather_icons: weather_icons});
+    })
+
+            
         }
     });
 });

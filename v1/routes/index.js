@@ -6,6 +6,11 @@ var Campground = require("../models/campground");
 var async = require("async");
 var nodemailer = require("nodemailer");
 var crypto = require("crypto");
+var process = require('process');
+var bcrypt = require('bcrypt');
+var waterfall = require('async-waterfall');
+
+
 
 //root route
 router.get("/", function(req, res){
@@ -127,7 +132,7 @@ router.get('/reset/:token', function(req, res) {
     if (!user) {
       req.flash('error', 'Password reset token is invalid or has expired.');
       return res.redirect('/forgot');
-    }
+    } 
     res.render('reset', {token: req.params.token});
   });
 });

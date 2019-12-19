@@ -10,6 +10,13 @@
                     <h4> £<%=campground.price %>/night</h4>
                 </div>
                 <hr>
+                <div class="d-flex justify-content-center">
+                    <h4> LOCATION <%= campground.location %></h4>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <h4> WEATHER <%= temp %>°C | <img src="<%= weather_icons %>" alt=""></h4>
+                </div>
+                <hr>
                 <p class="p-2"> <%= campground.description %> </p>
                
                 <hr>
