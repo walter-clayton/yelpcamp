@@ -13,16 +13,18 @@
                     </div>
                    <div class="form-group">
                        <div class="form-group">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name = "campground[image]" placeholder="image url" value=" <%= campground.image %>"></textarea>
+                        <textarea class="form-control" type= "text" id="exampleFormControlTextarea1" rows="3" name = "campground[image]" placeholder="image url" value=" <%= campground.image %>"><%= campground.image %></textarea>
                        </div>
                        <div class="form-group">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name = "campground[description]" placeholder="description" value=" <%= campground.description %>"></textarea>
+                        
+                        <textarea class="form-control" type= "text" id="exampleFormControlTextarea1" rows="3" name = "campground[description]" placeholder="description" value=" <%= campground.description %>"><%= campground.description %></textarea>
                        </div>
-                       <button class="btn btn-lg btn-secondary btn-block">Submit</button>
+                    <div class="form-group">
+                             <input class="form-control" type="text" name = "campground[location]" value=" <%= campground.location %>">
+                    </div>
+                    <button class="btn btn-lg btn-secondary btn-block">Submit</button>
                    </div>
-                   <div class="form-group">
-                    <input class="form-control" type="text" name = "campground[location]" value=" <%= campground.location %>">
-                </div>
+
            </form>
            <a href="/campgrounds">Go back</a>
         </div>
