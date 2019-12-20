@@ -1,15 +1,12 @@
 <%- include ('../partials/header') %>
 
-<div class="row">
+<div class="row mt-5">
 	<div class="col-md-4">
 			<h1><%= user.firstName + " " + user.lastName %></h1>
-		<div class="thumbnail">
-			<img src="<%= user.avatar %>" alt="user profile image">
-			<div class="caption"><a href="mailto:<%= user.email %>"><%= user.email %></a></div>
-		</div>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quasi similique architecto ad modi sunt quaerat possimus, officiis quos. Voluptatibus repellendus exercitationem, id saepe sunt consectetur non quam sapiente assumenda.
-
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quasi similique architecto ad modi sunt quaerat possimus, officiis quos. Voluptatibus repellendus exercitationem, id saepe sunt consectetur non quam sapiente assumenda.
+		<div class="thumbnail rounded">
+			<img style = "width: 200px; height: 200px;" src="<%= user.avatar %>" alt="user profile image">
+			</div>
+		<div class="caption"><a href="mailto:<%= user.email %>"><%= user.email %></a></div>	
 	</div>
 	<div class="col-md-8">
 		<h3><%= user.username %>'s campgrounds:</h3>
@@ -20,5 +17,7 @@
 		</ul>
 	</div>
 </div>
+
+
 
 <%- include ('../partials/footer') %>

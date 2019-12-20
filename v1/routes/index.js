@@ -5,9 +5,8 @@ var User = require("../models/user");
 var Campground = require("../models/campground");
 var async = require("async");
 var nodemailer = require("nodemailer");
-var crypto = require("crypto");
 var process = require('process');
-var bcrypt = require('bcrypt');
+var crypto = require("crypto");
 var waterfall = require('async-waterfall');
 
 
@@ -204,5 +203,24 @@ router.get("/users/:id", function(req, res) {
   });
 });
 
+// // EDIT PROFILE
+// router.get("/users/:id/edit", middleware.isLoggedIn, function(req, res){
+//   User.findById(req.params.id, function(err, foundCampground){
+//       res.render("users/edit", {user: foundUser});
+//   });
+// });
+
+// // UPDATE PROFILE
+// router.put("/users/:id",middleware.isLoggedIn, function(req, res){
+//   // find and update the correct campground
+//   Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground){
+//      if(err){
+//          res.redirect("/campgrounds");
+//      } else {
+//          //redirect somewhere(show page)
+//          res.redirect("/users/:id" + req.params.id);
+//      }
+//   });
+// });
 
 module.exports = router;
