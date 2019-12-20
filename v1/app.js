@@ -19,7 +19,9 @@ var commentRoutes       = require("./routes/comments"),
     campgroundRoutes    = require("./routes/campgrounds"),
     indexRoutes         = require("./routes/index");
 
-mongoose.connect('mongodb://localhost/yelp_camp', {useNewUrlParser: true, useUnifiedTopology: true}, (err) => {
+
+
+mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true, useUnifiedTopology: true}, (err) => {
     if(err) {
     console.log('Database error: ' + err);
     } else {
@@ -70,5 +72,5 @@ app.listen(process.env.PORT, process.env.IP, function(){
 
 var port = process.env.PORT || 3000;
 app.listen(3000, function(){
-	console.log("ready on port 27017 " + port);
+	console.log("ready on port 3000 " + port);
 });
