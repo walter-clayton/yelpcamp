@@ -3,9 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">    
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- FAVICON -->
+    <link rel='icon' href='./images/campground-solid.ico' type='image/x-icon'>
+    <!-- FONTAWESOME -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+     <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-analytics.js"></script>
+    
     <title>YelpCamp</title>
 </head>
 <body>
-    <h1>Header</h1>
+         
+	<nav class=" navbar navbar-expand-lg navbar-light bg-light  ">
+        <a class="navbar-brand hover " href="/campgrounds"> <i class="fas fa-campground"></i></a>
+        <button class="navbar-toggler"  type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" >
+        <span class="navbar-toggler-icon "></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="nav navbar-nav mr-auto  content-align-around">
+                        <li class="nav-item">
+                        <form action="/campgrounds" method="GET" class="navbar-form form-inline">
+                            <div id = "search" class="input-group mx-auto" style = "width: 100%">
+                                <input type="text" id = "search"  name = "search" placeholder="Search" class=" mt-2 bg-transparent form-control border "  aria-describedby="button-addon1">
+                                <div class="input-group-append">
+                                         <input  type="submit" value="Search" class = "mt-2 btn btn-light border " id = "button-addon1">
+                                </div>
+                            </div>
+                        </form>
+                        </li>
+                </ul>
+                <ul class="nav navbar-nav mr-0">
+                        <%   if(!currentUser){ %>
+                        <li class="mx-auto">
+                            <a class="nav-link mx-auto" href="/login"> <i class="fas fa-user"></i> LOGIN </a>
+                        </li>
+                        <li class="mx-auto">
+                            <a class=" nav-link" href="/register"><i class="fas fa-sign-in-alt"></i> SIGN UP</a>
+                        </li> 
+                                <%   } else { %>
+                        <li class="mx-auto">
+                            <a class="nav-link" href="/logout"><span ><i class="fas fa-sign-out-alt"></i> LOGOUT</span></a>
+                        </li>
+                        <li class="mx-auto">
+                            <a class="nav-link" href="/users/<%= currentUser._id %>"><span class="hover"><i class="fas fa-user"></i> <strong> <%= currentUser.username %> </strong></span></a>
+                        </li>
+                                <% } %>
+                </ul>
+            </div>
+    </nav>
+
+<div class="container">
+        <% if(error && error.length > 0) { %>
+         <div class="alert alert-danger" role="alert">
+             <%= error %> 
+         </div>
+     </div>
+     <% } %>
+     <% if(success && success.length > 0) { %>
+    <div class="container">
+         <div class="alert alert-success" role="alert">
+             <%= success %> 
+         </div>
+         <% } %>
+     </div>
+
+<div class="container">
+
